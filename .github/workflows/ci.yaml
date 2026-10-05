@@ -1,0 +1,63 @@
+name: Full-stack checks
+on: [push, pull_request]
+permissions:
+  contents: read
+
+jobs:
+  application:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: hoodlink
+          POSTGRES_PASSWORD: ci_local_only
+          POSTGRES_DB: hoodlink
+        ports: [5432:5432]
+        options: >-
+          --health-cmd "pg_isready -U hoodlink -d hoodlink"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://hoodlink:ci_local_only@localhost:5432/hoodlink
+      TEST_DATABASE_URL: postgresql://hoodlink:ci_local_only@localhost:5432/hoodlink
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/api/package-lock.json
+            apps/web/package-lock.json
+      - run: npm ci && npm --prefix apps/api ci && npm --prefix apps/web ci
+      - run: npm test
+      - run: npm run test:integration
+      - run: npm run lint
+      - run: npm run build
+      - run: npm --prefix apps/api audit --omit=dev && npm --prefix apps/web audit --omit=dev
+
+  containers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: docker compose up --build -d --wait
+      - run: npm run test:e2e
+      - if: failure()
+        run: docker compose logs --no-color
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-results
+          path: test-results
+          if-no-files-found: ignore
+      - if: always()
+        run: docker compose down

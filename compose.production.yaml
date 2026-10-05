@@ -1,0 +1,19 @@
+services:
+  migrate:
+    environment:
+      NODE_ENV: production
+      ALLOW_DEMO_AUTH: "false"
+      ALLOW_DEMO_ROLE_SWITCH: "false"
+      SESSION_SECRET: ${SESSION_SECRET:?Set a strong SESSION_SECRET in your environment}
+      BOT_TOKEN: ${BOT_TOKEN:?Set BOT_TOKEN in your environment}
+      SEED_DEMO_DATA: ${SEED_DEMO_DATA:-false}
+  api:
+    environment:
+      NODE_ENV: production
+      ALLOW_DEMO_AUTH: "false"
+      ALLOW_DEMO_ROLE_SWITCH: "false"
+      SESSION_SECRET: ${SESSION_SECRET:?Set a strong SESSION_SECRET in your environment}
+      BOT_TOKEN: ${BOT_TOKEN:?Set BOT_TOKEN in your environment}
+  db:
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a production POSTGRES_PASSWORD}

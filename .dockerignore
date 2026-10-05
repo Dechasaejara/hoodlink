@@ -1,0 +1,11 @@
+**/node_modules
+**/.next
+**/dist
+**/.git
+**/data
+**/.env
+**/.env.local
+**/*.tsbuildinfo
+test-results
+playwright-report
+HoodLink Community Ecosystem UI Board desktop.png

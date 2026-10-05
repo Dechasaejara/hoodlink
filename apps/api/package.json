@@ -1,0 +1,40 @@
+{
+  "name": "hoodlink-api",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node start.cjs",
+    "test": "tsx --test test/*.test.ts",
+    "test:integration": "tsx --test test/*.integration.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx src/database/migrate.ts",
+    "db:seed": "tsx src/database/seed.ts",
+    "telegram:setup": "tsx src/telegram/setup.ts",
+    "db:import:sqlite": "tsx src/database/import-sqlite.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.0",
+    "@nestjs/core": "^11.1.0",
+    "@nestjs/platform-express": "^11.1.0",
+    "@nestjs/throttler": "^6.4.0",
+    "dotenv": "^17.2.0",
+    "drizzle-orm": "^0.45.1",
+    "grammy": "^1.46.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "zod": "^4.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.15.6",
+    "drizzle-kit": "^0.31.8",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}

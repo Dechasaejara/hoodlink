@@ -1,0 +1,38 @@
+import type { Business, Challenge, Channel, CommunityEvent, Hood, Post } from './types';
+
+export const photo = (id: string, width = 900) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=85`;
+export const hoods: Hood[] = [
+  { id: 'bole', name: 'Bole Hood', description: 'Good people. Great places. Your neighborhood, connected.', category: 'Nearby', image: photo('photo-1449824913935-59a10b8d2000'), members: 1248, color: '#0c7546' },
+  { id: 'school', name: 'School Community', description: 'Study together, share opportunities, and make campus yours.', category: 'My school', image: photo('photo-1523240795612-9a054b0db644'), members: 856, color: '#3669a0' },
+  { id: 'green', name: 'Green Addis', description: 'A cleaner, greener city starts with all of us.', category: 'For you', image: photo('photo-1441974231531-c6227db76b6e'), members: 642, color: '#40733e' },
+  { id: 'creative', name: 'Addis Creatives', description: 'Make something that matters. Art, design, and a little inspiration.', category: 'For you', image: photo('photo-1513364776144-60967b0f800f'), members: 389, color: '#aa673d' },
+  { id: 'runners', name: 'Early Miles Club', description: 'Fresh air, new friends, and one more kilometer.', category: 'Nearby', image: photo('photo-1552674605-db6ffd4facb5'), members: 216, color: '#a04c58' },
+  { id: 'music', name: 'The Listening Room', description: 'Discover local sounds and the people behind them.', category: 'For you', image: photo('photo-1516280440614-37939bbacd81'), members: 473, color: '#8062a0' },
+];
+export const challenges: Challenge[] = [
+  { id: 'green-week', title: 'A greener hood, together', description: 'Join your neighbors for a week of small actions that make a real difference. Bring a reusable bottle, plant something, or join our Saturday cleanup.', category: 'Community', image: photo('photo-1464226184884-fa280b87c399'), participants: 128, points: 150, days: 5, progress: 64, icon: 'leaf', hood: 'Green Addis' },
+  { id: 'study-sprint', title: 'The 5-day study sprint', description: 'Make room for one focused hour a day. Share your goals with your study group and keep each other going.', category: 'School', image: photo('photo-1434030216411-0b793f4b4173'), participants: 86, points: 100, days: 3, progress: 42, icon: 'book', hood: 'School Community' },
+  { id: 'local-love', title: 'A little local love', description: 'Discover a neighborhood business and share what makes it special with your community.', category: 'Lifestyle', image: photo('photo-1501339847302-ac426a4a7cbb'), participants: 94, points: 75, days: 7, progress: 28, icon: 'coffee', hood: 'Bole Hood' },
+  { id: 'kindness', title: 'Pass the kindness on', description: 'Lend a hand, share a skill, or simply check in with someone. Every kind gesture counts.', category: 'Community', image: photo('photo-1529156069898-49953e39b3ac'), participants: 203, points: 120, days: 12, progress: 76, icon: 'heart', hood: 'Bole Hood' },
+];
+export const businesses: Business[] = [
+  { id: 'coffee', name: 'Bole Coffee House', category: 'Food & drink', image: photo('photo-1501339847302-ac426a4a7cbb'), description: 'Your neighborhood pause. Freshly roasted Ethiopian coffee, homemade pastries, and a good place to catch up.', address: 'Bole, near Edna Mall, Addis Ababa', rating: 4.8, distance: '0.4 km', offer: '15% off for students', code: 'HOOD-COFFEE15', phone: '+251911000101', hours: 'Mon - Sun, 7:00 AM - 9:00 PM' },
+  { id: 'books', name: 'Yades Bookstore', category: 'Shopping', image: photo('photo-1507842217343-583bb7270b66'), description: 'Stories worth sharing, books worth keeping. Find your next read and meet fellow book lovers.', address: 'Bole Road, Addis Ababa', rating: 4.9, distance: '0.8 km', offer: '10% off your next read', code: 'HOOD-READ10', phone: '+251911000102', hours: 'Mon - Sat, 9:00 AM - 7:00 PM' },
+  { id: 'fitness', name: 'FitLife Studio', category: 'Health & fitness', image: photo('photo-1517836357463-d25dfeac3438'), description: 'Move your way. Friendly coaches, group classes, and an encouraging neighborhood community.', address: 'Atlas, Bole, Addis Ababa', rating: 4.7, distance: '1.2 km', offer: 'Your first class is on us', code: 'HOOD-FIRSTCLASS', phone: '+251911000103', hours: 'Mon - Sat, 6:00 AM - 9:00 PM' },
+  { id: 'bakery', name: 'Mulu Bakery', category: 'Food & drink', image: photo('photo-1509440159596-0249088772ff'), description: 'Baked with love every morning. Pick up something warm and make your day a little sweeter.', address: 'Bole Medhanialem, Addis Ababa', rating: 4.8, distance: '0.6 km', offer: 'A free pastry with your coffee', code: 'HOOD-SWEET', phone: '+251911000104', hours: 'Mon - Sun, 6:30 AM - 8:00 PM' },
+];
+export const events: CommunityEvent[] = [
+  { id: 'cleanup', title: 'Bole neighborhood cleanup', category: 'Community', image: photo('photo-1464226184884-fa280b87c399'), month: 'OCT', day: '10', date: '2026-10-10', location: 'Bole Community Park', time: '9:00 AM - 12:00 PM', attending: 42, description: 'A morning to give back to the place we call home. Meet at the park entrance. Gloves and collection bags provided; bring water and comfortable shoes.' },
+  { id: 'coffee-meet', title: 'Coffee & good company', category: 'Social', image: photo('photo-1511081692775-05d0f180a065'), month: 'OCT', day: '12', date: '2026-10-12', location: 'Bole Coffee House', time: '4:00 PM - 6:00 PM', attending: 28, description: 'Meet a few new faces over a cup of something good. Everyone is welcome. Pay for your own coffee; conversation is free.' },
+  { id: 'creative-market', title: 'The neighborhood makers market', category: 'Arts & culture', image: photo('photo-1481437156560-3205f6a55735'), month: 'OCT', day: '17', date: '2026-10-17', location: 'Atlas Courtyard', time: '10:00 AM - 5:00 PM', attending: 116, description: 'Discover art, handmade goods, and the people making them. A relaxed Saturday supporting local creativity. Free entry.' },
+];
+export const posts: Post[] = [
+  { id: 'post-1', author: 'Sara Alemu', avatar: photo('photo-1534528741775-53994a69daeb', 100), role: 'Community member', hood: 'Bole Hood', body: "A little Saturday well spent. We planted 24 new trees at the community park this morning! Thank you to everyone who showed up. Same time next week?", image: photo('photo-1529156069898-49953e39b3ac'), createdAt: '2026-10-04T08:30:00.000Z', likes: 38 },
+  { id: 'post-2', author: 'Abel Tesfaye', avatar: photo('photo-1500648767791-00dcc994a43e', 100), role: 'Student at AAU', hood: 'School Community', body: 'Anyone up for a study session at the library tomorrow? Working through the design assignment and would love some company.', createdAt: '2026-10-04T07:10:00.000Z', likes: 12 },
+  { id: 'post-3', author: 'Mekdes Bekele', avatar: photo('photo-1544005313-94ddf0286df2', 100), role: 'Local maker', hood: 'Addis Creatives', body: "A new collection, made right here in Addis. Bringing these pieces to the makers market this month. Come say hello!", image: photo('photo-1513364776144-60967b0f800f'), createdAt: '2026-10-03T15:00:00.000Z', likes: 27 },
+];
+export const channels: Channel[] = [
+  { id: 'bole', name: 'Bole Hood', image: hoods[0].image, members: 1248, preview: 'Sara: See you at the park on Saturday!' },
+  { id: 'school', name: 'Campus study group', image: hoods[1].image, members: 86, preview: 'Abel: Library at 3? Bring your notes.' },
+  { id: 'green', name: 'Green Addis', image: hoods[2].image, members: 642, preview: 'Mekdes: Small steps, big difference.' },
+];

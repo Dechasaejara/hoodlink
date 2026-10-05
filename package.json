@@ -1,0 +1,25 @@
+{
+  "name": "hoodlink",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c green,cyan \"npm --prefix apps/api run dev\" \"npm --prefix apps/web run dev\"",
+    "build": "npm --prefix apps/api run build && npm --prefix apps/web run build",
+    "test": "npm --prefix apps/api test",
+    "test:e2e": "playwright test",
+    "test:integration": "npm --prefix apps/api run test:integration",
+    "docker:up": "docker compose up --build -d --wait",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f api web",
+    "db:up": "docker compose up -d --wait db",
+    "db:migrate": "npm --prefix apps/api run db:migrate",
+    "db:seed": "npm --prefix apps/api run db:seed",
+    "db:generate": "npm --prefix apps/api run db:generate",
+    "lint": "npm --prefix apps/web run lint",
+    "setup": "npm install && npm --prefix apps/api install && npm --prefix apps/web install"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "concurrently": "^9.2.1"
+  }
+}

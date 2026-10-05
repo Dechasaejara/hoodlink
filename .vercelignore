@@ -1,0 +1,13 @@
+/apps/api/
+/docs/
+/tests/
+/test-results/
+/.github/
+/.vscode/
+/compose.yaml
+/compose.production.yaml
+/package.json
+/package-lock.json
+/playwright.config.ts
+/README.md
+/HoodLink Community Ecosystem UI Board desktop.png
